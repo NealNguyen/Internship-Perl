@@ -1,0 +1,23 @@
+use strict;
+use warnings;
+
+my $dir = 'testFolder';
+
+opendir(DIR, $dir) or die $!;
+
+while (my $file = readdir(DIR)){
+#$counter2++;
+next unless (-f "$dir/$file");
+next unless ($file =~ m/\.php$/);
+my $filename = $0;
+open(my $fh, '<', $filename)
+or die "Could not open file '$filename' $!";
+open($fh, '>', $filename)
+or die "Could not open file '$filename' $!";
+while (my $row = <$fh>) {
+  if(index($row, 'mysql_connect') != -1){
+  }
+ }
+}
+close($fh);
+closedir(DIR);
